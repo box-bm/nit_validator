@@ -1,12 +1,12 @@
 name: nit_validator
-description: A package for check nit for Guatemala.
+description: A simple tool for offline check nit number, this use an simple algorithm to check if this is ok and returns a boolean according to the input.
 version: 1.0.0
 homepage: https://github.com/box-bm/nit_validator
 repository: https://github.com/box-bm/nit_validator
 issue_tracker: https://github.com/box-bm/nit_validator/issues
 
 environment:
-  sdk: '>=2.18.6 <3.0.0'
+  sdk: ">=2.18.6 <3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:

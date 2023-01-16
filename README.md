@@ -6,9 +6,9 @@ This plugin works fine in any platform (Android, iOS, MacOS, Linux and Windows).
 
 ## Features
 
-| Feature   | Android | iOS | MacOS | Windows | Linux |
-| --------- | ------- | --- | ----- | ------- | ----- |
-| Check NIT | ✅      | ✅  | ✅    | ✅      | ✅    |
+| Feature     | Android | iOS | MacOS | Windows | Linux | Web |
+| ----------- | ------- | --- | ----- | ------- | ----- | --- |
+| validateNIT | ✅      | ✅  | ✅    | ✅      | ✅    | ✅  |
 
 ## Getting started
 
@@ -20,10 +20,10 @@ Only you need to install and use that.
 From any place of your code, only call validateNIT function.
 
 ```dart
-validateNIT("your nit");
-```
+import 'package:nit_validator/nit_validator.dart';
 
-And this will return an boolean checking if that nit is valid or wrong nit number.
+validateNIT("your nit number"); // will be return a true or false
+```
 
 ## Additional information
 
