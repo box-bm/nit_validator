@@ -7,6 +7,38 @@ on:
 
 jobs:
   publish:
+    runs-on: ubuntu-latest
     permissions:
+      contents: write
       id-token: write
-    uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          token: ${{ secrets.GH_TOKEN }}
+
+      - uses: dart-lang/setup-dart@v1
+
+      - name: Extract version from tag
+        id: version
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Update pubspec.yaml version
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: sed -i "s/^version: .*/version: $VERSION/" pubspec.yaml
+
+      - name: Commit version bump
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          branch: main
+          commit_message: "chore: bump version to ${{ steps.version.outputs.version }}"
+          file_pattern: pubspec.yaml
+
+      - name: Install dependencies
+        run: dart pub get
+
+      - name: Publish
+        run: dart pub publish --force
