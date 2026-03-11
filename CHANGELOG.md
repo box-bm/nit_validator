@@ -5,19 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
-## v1.0.3 - 2026-03-11
+## [1.0.2] - 2026-03-11
 
-### What's Changed
+### Added
 
-- fix: auto-bump pubspec.yaml version from tag before publishing (#5)
+- CI/CD workflows for automated testing, publishing, and changelog updates (#1)
+- Dart 3 compatibility, performance improvements and code security (#2)
 
-## v1.0.2 - 2026-03-11
+### Fixed
 
-### What's Changed
-
-- fix: correct changelog and release-drafter version resolution (#3)
-- Feature: Dart 3 performance and security update (#2)
-- Feature: CI/CD workflows (#1)
+- Correct changelog typo and release-drafter version resolution (#3)
+- Buy Me a Coffee button now renders correctly on pub.dev (#4) (#7)
+- Auto-bump pubspec.yaml version from tag before publishing (#5)
+- Restore working publish workflow configuration (#6)
 
 ## [1.0.1] - 2023-01-16
 
