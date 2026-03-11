@@ -30,3 +30,7 @@ validateNIT("your nit number"); // will be return a true or false
 This plugins works offline. If you want to get more information please visit SAT or check with your provider to have that information.
 
 We will work on this plugin for provide more functionalities and update always at the latest flutter version.
+
+## Support
+
+<a href="https://www.buymeacoffee.com/boxdev"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=boxdev&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
