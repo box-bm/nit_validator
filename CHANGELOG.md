@@ -12,7 +12,7 @@ Here we share the first version for this package
 ### Changed
 
 - Documentation files
-- Reorder project followed by dart convenation
+- Reorder project followed by dart convention
 
 ## [1.0.0] - 2023-01-16
 
@@ -22,6 +22,3 @@ Here we share the first version for this package
 
 - validateNIT: for validate nit and return an boolean. Works offline.
 
-### Changed
-
-### Fixed
