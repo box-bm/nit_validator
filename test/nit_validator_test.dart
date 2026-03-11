@@ -1,4 +1,4 @@
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 
 import 'package:nit_validator/nit_validator.dart';
 
@@ -17,5 +17,8 @@ void main() {
   test('Test wrong NITs', () {
     expect(validateNIT("9829389k"), false);
     expect(validateNIT("1487"), false);
+  });
+  test('Test null NIT', () {
+    expect(validateNIT(null), false);
   });
 }

@@ -1,4 +1,4 @@
-RegExp _regex = RegExp(r"^(\d+)-(\d|K)$");
+final _regex = RegExp(r'^(\d+)-(\d|K)$');
 
 /// Check nit number and return an boolean value. if it's ok, send `true` or else send `false`
 ///
@@ -11,11 +11,12 @@ RegExp _regex = RegExp(r"^(\d+)-(\d|K)$");
 /// validateNIT("1487010k") == true
 /// validateNIT("1487010-k") == true
 /// ```
-bool validateNIT(dynamic nit) {
-  if (nit == null || nit.toString().isEmpty) return false;
+bool validateNIT(Object? nit) {
+  if (nit == null) return false;
 
   // Convert text to upper case for every nit.
   String text = nit.toString().toUpperCase();
+  if (text.isEmpty) return false;
 
   // If this not includes dash sign, we will add this to the nit
   if (!text.contains('-')) {
@@ -24,29 +25,23 @@ bool validateNIT(dynamic nit) {
   }
 
   // then by regex expression we will find all matches and get left side and right side
-  var matches = _regex.allMatches(text);
-  if (matches.isEmpty) return false;
-
-  List<String?> nitGroups = matches.elementAt(0).groups([1, 2]);
+  final match = _regex.firstMatch(text);
+  if (match == null) return false;
 
   // we take before and after values than the dash sign
-  String beforeDashValue = nitGroups.elementAt(0).toString(),
-      afterDashValue = nitGroups.elementAt(1).toString();
+  final String beforeDashValue = match.group(1)!;
+  final String afterDashValue = match.group(2)!;
 
   int summationDigitsOfNIT = 0;
-  beforeDashValue
-      .split('')
-      .reversed
-      .toList()
-      .map((e) => int.parse(e))
-      .toList()
-      .asMap()
-      .forEach((index, element) {
-    summationDigitsOfNIT += (element * (index + 2));
-  });
-  int calculatedLastValue = (11 - (summationDigitsOfNIT % 11)) % 11;
-  String validationRightValue =
-      calculatedLastValue == 10 ? "K" : calculatedLastValue.toString();
+  final digits = beforeDashValue.codeUnits;
+  for (int i = 0; i < digits.length; i++) {
+    final digit = digits[digits.length - 1 - i] - 48; // '0' == 48
+    summationDigitsOfNIT += digit * (i + 2);
+  }
+
+  final int calculatedLastValue = (11 - (summationDigitsOfNIT % 11)) % 11;
+  final String validationRightValue =
+      calculatedLastValue == 10 ? 'K' : calculatedLastValue.toString();
 
   return afterDashValue == validationRightValue;
 }
